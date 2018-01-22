@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fission on Documentation for Hugo Learn Theme</title>
+    <title>Fission on Serverless Functions for Kubernetes</title>
     <link>https://life1347.github.io/docs/0.4.0/</link>
-    <description>Recent content in Fission on Documentation for Hugo Learn Theme</description>
+    <description>Recent content in Fission on Serverless Functions for Kubernetes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 08 Sep 2017 16:26:29 -0700</lastBuildDate>
