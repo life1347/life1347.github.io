@@ -7,25 +7,25 @@
     <meta name="description" content="Documentation for Fission">
 <meta name="author" content="Fission">
 
-    <link rel="shortcut icon" href="https://life1347.github.io/docs/0.4.0images/favicon.png" type="image/x-icon" />
-<link rel="icon" href="https://life1347.github.io/docs/0.4.0images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://life1347.github.io/docs/0.4.0/images/favicon.png" type="image/x-icon" />
+<link rel="icon" href="https://life1347.github.io/docs/0.4.0/images/favicon.png" type="image/x-icon" />
 
-    <title>Compiling Fission :: Documentation for Hugo Learn Theme</title>
+    <title> :: Documentation for Hugo Learn Theme</title>
     
     
-    <link href="/docs/0.4.0/css/nucleus.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/font-awesome.min.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/hybrid.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/featherlight.min.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/perfect-scrollbar.min.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/auto-complete.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/theme.css?1516648164" rel="stylesheet">
-    <link href="/docs/0.4.0/css/hugo-theme.css?1516648164" rel="stylesheet">
+    <link href="/docs/0.4.0/css/nucleus.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/font-awesome.min.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/hybrid.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/featherlight.min.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/perfect-scrollbar.min.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/auto-complete.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/theme.css?1516648691" rel="stylesheet">
+    <link href="/docs/0.4.0/css/hugo-theme.css?1516648691" rel="stylesheet">
     
-      <link href="/docs/0.4.0/css/theme-fission.css?1516648164" rel="stylesheet">
+      <link href="/docs/0.4.0/css/theme-fission.css?1516648691" rel="stylesheet">
     
 
-    <script src="/docs/0.4.0/js/jquery-2.x.min.js?1516648164"></script>
+    <script src="/docs/0.4.0/js/jquery-2.x.min.js?1516648691"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/0.4.0/compilation/">
+  <body class="" data-url="/docs/0.4.0/_header/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -43,7 +43,7 @@
   <div id="header-wrapper">
     <div id="header">
       <a id="logo" href="http://fission.io/">
-  <img src="https://life1347.github.io/docs/0.4.0images/fission-logo.png">
+  <img src="https://life1347.github.io/docs/0.4.0/images/fission-logo.png">
 </a>
 
     </div>
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="/docs/0.4.0/js/lunr.min.js?1516648164"></script>
-<script type="text/javascript" src="/docs/0.4.0/js/auto-complete.js?1516648164"></script>
+<script type="text/javascript" src="/docs/0.4.0/js/lunr.min.js?1516648691"></script>
+<script type="text/javascript" src="/docs/0.4.0/js/auto-complete.js?1516648691"></script>
 <script type="text/javascript">
     
-        var baseurl = '\/docs\/0.4.0';
+        var baseurl = '\/docs\/0.4.0\/';
     
 </script>
-<script type="text/javascript" src="/docs/0.4.0/js/search.js?1516648164"></script>
+<script type="text/javascript" src="/docs/0.4.0/js/search.js?1516648691"></script>
 
     
   </div>
@@ -78,8 +78,8 @@
   
     
     <li data-nav-id="/docs/0.4.0/compilation/" title="Compiling Fission" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/docs/0.4.0/compilation/">
@@ -270,7 +270,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/fission/fission/edit/master/Documentation/docs-site/content/compilation/_index.en.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/fission/fission/edit/master/Documentation/docs-site/content/_header.en.md" target="blank">
                       <i class="fa fa-code-fork"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -295,7 +295,7 @@
             
           
           
-            <a href='/docs/0.4.0/'>Fission</a> > Compiling Fission
+            <a href='/docs/0.4.0/'>Fission</a> > 
           
          
           
@@ -317,62 +317,19 @@
         
         <div id="body-inner">
           
-            <h1>Compiling Fission</h1>
+            <h1></h1>
           
 
         
 
 
-<p>[You only need to do this if you&rsquo;re making Fission changes; if you&rsquo;re
-just deploying Fission, use fission.yaml which points to prebuilt
-images.]</p>
-
-<p>You&rsquo;ll need the <code>go</code> compiler and tools installed, along with the
-<a href="https://github.com/Masterminds/glide#install">glide dependency management
-tool</a>.  You&rsquo;ll also need
-docker for building images.</p>
-
-<p>The server side is compiled as one binary (&ldquo;fission-bundle&rdquo;) which
-contains controller, poolmgr and router; it invokes the right one
-based on command-line arguments.</p>
-
-<p>To build fission-bundle: clone this repo to
-<code>$GOPATH/src/github.com/fission/fission</code>, then from the top level
-directory (if you want to build the image with the docker inside
-minikube, you&rsquo;ll need to set the proper environment variables with
-<code>eval $(minikube docker-env)</code>):</p>
-
-<pre><code>  # Get dependencies
-  $ glide install
-
-  # Build fission server and an image
-  $ pushd fission-bundle
-  $ ./build.sh
-</code></pre>
-
-<p>You now need to build the docker image for fission. You can use
-<code>push.sh</code> and push it to a docker hub account. But it&rsquo;s easiest to use
-minikube and its built-in docker daemon:</p>
-
-<pre><code>  $ eval $(minikube docker-env)
-  $ docker build -t minikube/fission-bundle .
-</code></pre>
-
-<p>Next, install fission with this image on your kubernetes cluster using the helm chart:</p>
-
-<pre><code>  $ helm install --set &quot;image=minikube/fission-bundle,pullPolicy=IfNotPresent,analytics=false&quot; charts/fission-all
-</code></pre>
-
-<p>And if you&rsquo;re changing the CLI too, you can build it with:</p>
-
-<pre><code>  # Build Fission CLI
-  $ cd fission &amp;&amp; go install
-</code></pre>
+<p><img src="http://fission.io/img/fission-logo-whitebg.png" alt="fission" /></p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -405,23 +362,6 @@ minikube and its built-in docker daemon:</p>
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -465,6 +405,22 @@ minikube and its built-in docker daemon:</p>
                     
 
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
             
             
@@ -507,10 +463,8 @@ minikube and its built-in docker daemon:</p>
 
 
         
-            <a class="nav nav-prev" href="/docs/0.4.0/" title="Fission"> <i class="fa fa-chevron-left"></i></a>
         
-        
-            <a class="nav nav-next" href="/docs/0.4.0/prerequisite/" title="Kubernetes Quick Install" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="/docs/0.4.0/compilation/" title="Compiling Fission" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -519,20 +473,20 @@ minikube and its built-in docker daemon:</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/docs/0.4.0/js/clipboard.min.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/perfect-scrollbar.min.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/perfect-scrollbar.jquery.min.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/jquery.sticky.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/featherlight.min.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/html5shiv-printshiv.min.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/highlight.pack.js?1516648164"></script>
+    <script src="/docs/0.4.0/js/clipboard.min.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/perfect-scrollbar.min.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/perfect-scrollbar.jquery.min.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/jquery.sticky.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/featherlight.min.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/html5shiv-printshiv.min.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/highlight.pack.js?1516648691"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/docs/0.4.0/js/modernizr.custom.71422.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/learn.js?1516648164"></script>
-    <script src="/docs/0.4.0/js/hugo-learn.js?1516648164"></script>
+    <script src="/docs/0.4.0/js/modernizr.custom.71422.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/learn.js?1516648691"></script>
+    <script src="/docs/0.4.0/js/hugo-learn.js?1516648691"></script>
 
-    <link href="/docs/0.4.0/mermaid/mermaid.css?1516648164" type="text/css" rel="stylesheet" />
-    <script src="/docs/0.4.0/mermaid/mermaid.js?1516648164"></script>
+    <link href="/docs/0.4.0/mermaid/mermaid.css?1516648691" type="text/css" rel="stylesheet" />
+    <script src="/docs/0.4.0/mermaid/mermaid.js?1516648691"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
@@ -540,3 +494,4 @@ minikube and its built-in docker daemon:</p>
 
   </body>
 </html>
+
