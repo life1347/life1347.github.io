@@ -1,0 +1,217 @@
+<!-- Sidebar -->
+<section id="sidebar">
+
+  <!-- Intro -->
+  <section itemprop="publisher" itemscope itemtype="http://schema.org/Organization" id="p-intro">
+    <meta itemprop="url" content="{{ .Site.BaseURL }}">
+    {{ $pic := .Site.Params.intro.pic }}
+    {{ with $pic.src }}
+      {{ if $pic.circle }}
+        <a href='{{"/" | absURL}}'><img src="{{ . | absURL }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" /></a>
+      {{ else if $pic.imperfect }}
+        <a href="{{ $pic.url }}" class="logo">
+            <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+              <img src="{{ . | absURL }}" alt="{{ $pic.alt }}" />
+              <meta itemprop="url" content="{{ . | absURL }}">
+              <meta itemprop="width" content="112">
+              <meta itemprop="height" content="128">
+            </span>
+        </a>
+      {{ else }}
+        <a href='{{"/" | absURL}}'><img src="{{ . | absURL }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" /></a>
+      {{ end }}
+    {{ end }}
+    {{ with .Site.Params.intro }}
+      <header>
+        <meta itemprop="name" content="Ta-Ching Chen">
+        <span style="letter-spacing:0.25em;">{{ .header }}<br>{{ .link | safeHTML }}</span>
+        <p>{{ .paragraph | safeHTML }}</p>
+      </header>
+    {{ end }}
+    {{ if .Site.Params.socialAppearAtTop }}
+      <ul class="icons">
+        {{ if .Site.Params.rssAppearAtTop }}
+          <li>
+            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        {{ end }}
+        {{ partial "social" . }}
+      </ul>
+    {{ end }}
+  </section>
+
+  <!-- Posts List -->
+  <section id="popular-posts" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <div class="mini-posts">
+      <header>
+        <h3>{{ i18n "popular-posts" }} </h3>
+      </header>
+      <div class="posts-container">
+        {{ range (where .Site.Pages "Params.hotpost" true) }}
+          <article class="popular-post mini-post " itemprop="itemListElement">
+            <header>
+              <h3>
+                <a href="{{ .RelPermalink | absURL }}" itemprop="url"><span itemprop="name">{{ .Title }}</span></a>
+              </h3>
+              {{ $.Scratch.Set "dateType" .Date }}
+              <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}
+              </time>
+            </header>
+            <!-- {{ .Render "featured" }} -->
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts List -->
+  <section id="recent-posts" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <div class="mini-posts">
+      <header>
+        <h3>{{ i18n "recent-posts" }}</h3>
+      </header>
+      <div class="posts-container">
+        {{ $.Scratch.Set "recentPosts" .Site.Pages }}
+
+        {{ with .Site.Params.postAmount.sidebar }}
+          {{ $.Scratch.Set "postLimit" . }}
+        {{ else }}
+          {{ $.Scratch.Set "postLimit" 5 }}
+        {{ end }}
+
+        {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
+          <article class="mini-post" itemprop="itemListElement">
+            <header>
+              <h3>
+                <a href="{{ .RelPermalink | absURL }}" itemprop="url"><span itemprop="name">{{ .Title }}</span></a>
+              </h3>
+              {{ $.Scratch.Set "dateType" .Date }}
+              <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}
+              </time>
+            </header>
+            <!-- {{ .Render "featured" }} -->
+          </article>
+        {{ end }}
+      </div>
+      <div class="view-more">
+      {{ if ge (len (where .Site.Pages "Type" "post")) ($.Scratch.Get "postLimit") }}
+        {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+            <a href="/{{ .Lang }}/blog" class="button">{{ i18n "view-more-posts" }}</a>
+        {{ else }}
+            <a href="/blog" class="button">{{ i18n "view-more-posts" }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+    </div>
+  </section>
+
+  <!-- This if statement only applies if someone goes to the /tags url -->
+  <!-- Otherwise this section is shown for all other links -->
+  {{ if ne .Site.Params.ShowTags false }}
+  <!-- Tags List -->
+    <section id="tags" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <header>
+        <h3>{{ i18n "tags" }}</h3>
+      </header>
+        {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+            {{ $.Scratch.Set "lang" (add .Lang "/") }}
+        {{ else }}
+            {{ $.Scratch.Set "lang" "" }}
+        {{ end }}
+
+        {{ if .Site.Params.tagsByCount }}
+            {{ $.Scratch.Set "tags" .Site.Taxonomies.tags.ByCount }}
+        {{ else }}
+            {{ $.Scratch.Set "tags" .Site.Taxonomies.tags.Alphabetical }}
+        {{ end }}
+
+        {{ range $key, $value := $.Scratch.Get "tags" }}
+          <nav style="padding-top:1.5em" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            {{ if ne $value.Name "" }}
+              {{ $path := printf "%s%s%s%s" ($.Site.BaseURL) ($.Scratch.Get "lang") "tags/" ($value.Name | urlize) }}
+              <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="{{ $path }}"><span itemprop="name">{{ $value.Name }}</span></a>
+              <span style="float:right;">{{ $value.Count }}</span>
+            {{ else }}
+              Uncategorized
+              <span style="float:right;">{{ $value.Count }}</span>
+            {{ end }}
+            <meta itemprop="position" content="{{ add $key 1 }}" />
+          </nav>
+        {{ end }}
+    </section>
+  {{ end }}
+
+  <!-- This if statement only applies if someone goes to the /categories url -->
+  <!-- Otherwise this section is shown for all other links -->
+  {{ if ne .Site.Params.ShowCategories false }}
+  <!-- Categories List -->
+    <section id="categories" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <header>
+        <h3>{{ i18n "categories" }}</h3>
+      </header>
+        {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+            {{ $.Scratch.Set "lang" (add .Lang "/") }}
+        {{ else }}
+            {{ $.Scratch.Set "lang" "" }}
+        {{ end }}
+
+        {{ if .Site.Params.categoriesByCount }}
+            {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.ByCount }}
+        {{ else }}
+            {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.Alphabetical }}
+        {{ end }}
+
+        {{ range $key, $value := $.Scratch.Get "categories" }}
+          <nav style="padding-top:1.5em" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            {{ if ne $value.Name "" }}
+              {{ $path := printf "%s%s%s%s" ($.Site.BaseURL) ($.Scratch.Get "lang") "categories/" ($value.Name | urlize) }}
+              <a itemscope="" itemtype="http://schema.org/Thing" itemprop="item" href="{{ $path }}"><span itemprop="name">{{ $value.Name }}</span></a>
+              <span style="float:right;">{{ $value.Count }}</span>
+            {{ else }}
+              Uncategorized
+              <span style="float:right;">{{ $value.Count }}</span>
+            {{ end }}
+            <meta itemprop="position" content="{{ add $key 1 }}" />
+          </nav>
+        {{ end }}
+    </section>
+  {{ end }}
+
+  <!-- About -->
+  {{ with .Site.Params.intro.about }}
+    <section id="mini-bio">
+      <h3>About</h1>
+      <p>{{ . | safeHTML }}</p>
+      <a href="{{ "/about/" | absURL }}" class="button">Learn More</a>
+    </section>
+  {{ end }}
+
+  <!-- Footer -->
+  <section id="footer">
+    {{ if .Site.Params.socialAppearAtBottom }}
+      <ul class="icons">
+        {{ if .Site.Params.rssAppearAtBottom }}
+          <li>
+            <a href="{{ .RSSLink }}" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a>
+          </li>
+        {{ end }}
+        {{ partial "social" . }}
+      </ul>
+    {{ end }}
+    <p class="copyright">
+      {{ with .Site.Copyright | safeHTML }}
+        {{ . }}
+      {{ else }}
+        &copy; {{ .Site.LastChange.Year }}
+        {{if isset .Site.Params "author" }}
+          {{ .Site.Params.author}}
+        {{ else }}
+          {{ .Site.Title }}
+        {{ end }}
+      {{end}}.
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>

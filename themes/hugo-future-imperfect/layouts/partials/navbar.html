@@ -1,0 +1,143 @@
+<!-- Header -->
+<header id="header">
+    {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+        {{ $.Scratch.Set "lang" (add "/" .Lang) }}
+    {{ else }}
+        {{ $.Scratch.Set "lang" "" }}
+    {{ end }}
+
+    {{ if or .IsHome (not .Site.Params.DynamicTitles) }}
+      <span><a href="{{ $.Scratch.Get "lang" }}/">{{ .Site.Params.navbarTitle }}</a></span>
+    {{ else if ne .Section "" }}
+      <span><a href="{{ $.Scratch.Get "lang" }}/">{{ .Section }}</a></span>
+    {{ else }}
+      <span><a href="{{ $.Scratch.Get "lang" }}/">{{ .Title }}</a></span>
+    {{ end }}
+
+    <nav class="links">
+        <ul>
+            {{ range .Site.Menus.main }}
+                <li>
+                    <a href="{{ .URL }}">
+                            <i class="{{ .Identifier }}">&nbsp;</i>{{ .Name }}
+                    </a>
+                </li>
+            {{ end }}
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            {{ if $.Scratch.Get "shareNav" }}
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            {{ end }}
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Menu -->
+<section id="menu">
+
+    <!-- Search -->
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="{{ .Site.BaseURL }}">
+            </form>
+        </section>
+
+    <!-- Links -->
+        <section>
+            <ul class="links">
+                {{ range .Site.Menus.main }}
+                    <li>
+                        <a href="{{ .URL }}">
+                            <h3>
+                                <i class="{{ .Identifier }}">&nbsp;</i>{{ .Name }}
+                            </h3>
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </section>
+
+    <!-- Posts List -->
+        <section id="popular-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>{{ i18n "popular-posts" }} </h3>
+                </header>
+                {{ range (where .Site.Pages "Params.hotpost" true) }}
+                <article class="popular-post mini-post " itemprop="itemListElement">
+                    <header>
+                    <h3>
+                        <a href="{{ .RelPermalink | absURL }}" itemprop="url"><span itemprop="name">{{ .Title }}</span></a>
+                    </h3>
+                    {{ $.Scratch.Set "dateType" .Date }}
+                    <time class="published" datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                        {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}
+                    </time>
+                    </header>
+                    <!-- {{ .Render "featured" }} -->
+                </article>
+                {{ end }}
+            </div>
+        </section>
+
+    <!-- Posts List -->
+        <section id="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>{{ i18n "recent-posts" }}</h3>
+                </header>
+                {{ $.Scratch.Set "recentPosts" .Site.Pages }}
+
+                {{ with .Site.Params.postAmount.sidebar }}
+                    {{ $.Scratch.Set "postLimit" . }}
+                {{ else }}
+                    {{ $.Scratch.Set "postLimit" 5 }}
+                {{ end }}
+
+                {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="{{ .RelPermalink | absURL }}">{{ .Title }}</a></h3>
+                                {{ $.Scratch.Set "dateType" .Date }}
+                                <time class="published" datetime=
+                                    '{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                                    {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
+                            </header>
+                            <!-- {{ .Render "featured" }} -->
+                        </article>
+                {{ end }}
+
+                {{ if ge (len (where .Site.Pages "Type" "post")) ($.Scratch.Get "postLimit") }}
+                    {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+                        <a href="/{{ .Lang }}/blog" class="button">{{ i18n "view-more-posts" }}</a>
+                    {{ else }}
+                        <a href="/blog" class="button">{{ i18n "view-more-posts" }}</a>
+                    {{ end }}
+                {{ end }}
+            </div>
+        </section>
+
+    <!-- Actions -->
+        <!--
+        <section>
+            <ul class="actions vertical">
+                <li><a href="#" class="button big fit">Log In</a></li>
+            </ul>
+        </section>
+        -->
+</section>

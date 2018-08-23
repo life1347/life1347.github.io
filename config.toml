@@ -1,0 +1,230 @@
+#baseurl = "http://blogv2-taching.rhcloud.com/"
+baseurl = "https://tachingchen.com/"
+languageCode = "en-us"
+title = "Ta Ching Chen"
+theme = "hugo-future-imperfect"
+preserveTaxonomyNames = true
+paginate = 3
+disqusShortname = "tachingchen"
+googleAnalytics = "UA-80139234-1"
+disablePathToLower = false
+enableRobotsTXT = true
+
+[languages.en]
+    languageCode = "en-us"
+
+[[languages.en.menu.main]]
+    name = "Blog"
+    url = "/blog"
+    identifier = "fa fa-newspaper-o"
+    weight = 1
+
+[[languages.en.menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    identifier = "fa fa-hdd-o"
+    weight = 2
+
+[[languages.en.menu.main]]
+    name = "About Me"
+    url = "https://resume.tachingchen.com"
+    identifier = "fa fa-rocket"
+    weight = 3
+
+#[[languages.en.menu.main]]
+#    name = "Unsplash"
+#    url = "https://unsplash.com/@life1347"
+#    identifier = "fa fa-camera-retro"
+#    weight = 4
+
+[[languages.en.menu.main]]
+    name = "繁體中文"
+    url = "/tw/"
+    identifier = "fa fa-terminal"
+    weight = 5
+
+#[[languages.en.menu.main]]
+#  name = "Itemized"
+#  url = "/itemized/"
+#  identifier = "fa fa-list"
+#  weight = 6
+
+[languages.tw]
+    languageCode = "zh-tw"
+
+[[languages.tw.menu.main]]
+    name = "部落格"
+    url = "/tw/blog"
+    identifier = "fa fa-newspaper-o"
+    weight = 1
+
+[[languages.tw.menu.main]]
+    name = "分類"
+    url = "/tw/categories/"
+    identifier = "fa fa-hdd-o"
+    weight = 2
+
+[[languages.tw.menu.main]]
+    name = "關於我"
+    url = "https://resume.tachingchen.com"
+    identifier = "fa fa-rocket"
+    weight = 3
+
+#[[languages.tw.menu.main]]
+#    name = "Unsplash"
+#    url = "https://unsplash.com/@life1347"
+#    identifier = "fa fa-camera-retro"
+#    weight = 4
+
+[[languages.tw.menu.main]]
+    name = "English"
+    url = "/"
+    identifier = "fa fa-terminal"
+    weight = 5
+
+[sitemap]
+  changefreq = "always"
+  priority = 1
+  filename = "sitemap.xml"
+
+[params]
+    # Sets the meta tag description, usually reserved for the main page
+    description          = "Tech Blog"
+    # This will appear on the top left of the navigation bar
+    navbarTitle          = "TC"
+    # Social media buttons that appear on the sidebar
+    socialAppearAtTop    = true
+    rssAppearAtTop       = true
+    socialAppearAtBottom = true
+    socialShare          = true
+    rssAppearAtBottom    = true
+    # set this to the section name if section is not post
+    viewMorePostLink     = "/"
+    defaultContentLanguage = "en"
+
+# Optional Params
+    categoriesByCount    = true
+    tagsByCount          = true
+    includeReadingTime   = true
+    # The set of favicons used are based on the write-up from this link:
+    # https://github.com/audreyr/favicon-cheat-sheet
+    # Please see the favicon partial template for more information
+    loadFavicon          = true
+    faviconVersion       = ""
+
+    showTags = false
+    showCategories = true
+
+    # Load custom CSS or JavaScript files. This replaces the deprecated params
+    # minifiedFilesCSS and minifiedFilesJS. The variable is an array so that you
+    # can load multiple files if necessary. You can also load the standard theme
+    # files by adding the value, "default".
+    # customCSS            = ["default", "/path/to/file"]
+    # customJS             = ["default", "/path/to/file"]
+
+    # Loading min files for exampleSite
+    #customCSS            = ["/css/main.minv3.css", "/css/highlightjs.style.css"]
+    #customJS            = ["/js/main.min.js"]
+    #customJS             = ["default", "/js/highlightjs-line-numbers.js"]
+    
+    customCSS            = ["default", "/css/highlightjs.style.css", "/css/fonts.css", "/css/font-awesome.min.css"]
+    customJS             = ["default", "/js/highlight.pack.js"]
+
+# parms.intro will appear on the sidebar
+# This is optional, but it's suggested to use
+[params.intro]
+    header    = "# HELLO WORLD"
+    paragraph = "SOFTWARE ENGINEER<br> > HI THERE, THIS IS TA-CHING!<br> > HOPE YOU FIND USEFUL<br> > AND INTERESTING THINGS HERE"
+    about     = ""
+    link     = "{<a href='/tw'>繁體中文</a>/<a href='/'>ENGLISH</a>}"
+
+# This will also appear on the sidebar.
+# A width of less than 100px is recommended
+# This is optional
+[params.intro.pic]
+    src       = "/img/main/logo.jpg"
+    # modify your picture in the shape of a circle or
+    # future imperfect's hexagonal shape
+    circle    = false
+    imperfect = true
+    width     = ""
+    alt       = "Ta-Ching Chen"
+    url       = "https://resume.tachingchen.com/"
+
+# Adjust the amount of recent posts on the sidebar.
+# This is optional. The default value 5 will be used
+[params.postAmount]
+    sidebar = 5
+
+# Set up your menu items in the navigation bar
+# You can use identifier to prepend a font awesome icon to your text
+#[[menu.main]]
+#    name = "Blog"
+#    url = "/"
+#    identifier = "fa fa-newspaper-o"
+#    weight = 1
+
+#[[menu.main]]
+#    name = "Categories"
+#    url = "/categories/"
+#    identifier = "fa fa-hdd-o"
+#    weight = 2
+
+#[[menu.main]]
+#    name = "About"
+#    url = "/about"
+#    identifier = "fa fa-camera-retro"
+#    weight = 3
+
+#[[menu.main]]
+#    name = "Unsplash"
+#    url = "https://unsplash.com/@life1347"
+#    identifier = "fa fa-camera-retro"
+#    weight = 3
+
+#[[menu.main]]
+#    name = "About Me"
+#    url = "https://resume.tachingchen.com"
+#    identifier = "fa fa-rocket"
+#    weight = 4
+
+# Insert your username and the icon will apear on the page as long as
+# socialAppearAtTop or socialAppearAtBottom is set to true in the params area
+# The social media icons will appear on the sidebar
+[social]
+    github          = "life1347"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = ""
+    instagram       = ""
+    youtube         = ""
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = ""
+    tumblr          = ""
+    xing            = ""
+    linkedin        = "tachingchen"
+    slideshare      = ""
+    stackoverflow   = ""
+    reddit          = ""
+    pinterest       = ""
+    googleplus      = ""
+    facebook        = "taching.chen.1"
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = ""
+    email           = "contact@tachingchen.com"
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+
+#[taxonomies.tags]
+#    byCount = true
+#    alphabetical = true

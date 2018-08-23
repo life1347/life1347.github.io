@@ -1,0 +1,29 @@
+[popular-posts]
+other = "Popular Posts"
+
+[recent-posts]
+other = "Recent Posts"
+
+[categories]
+other = "Categories"
+
+[category]
+other = "Category"
+
+[tags]
+other = "Tags"
+
+[tableOfContents]
+other = "Table of Contents"
+
+[view-more-posts]
+other = "View more posts"
+
+[continue-reading]
+other = "Continue Reading"
+
+[previous-page]
+other = "Previous Page"
+
+[next-page]
+other = "Next Page"

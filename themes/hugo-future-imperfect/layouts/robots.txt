@@ -1,0 +1,4 @@
+User-agent: *
+Sitemap: https://tachingchen.com/sitemap.xml
+Sitemap: https://tachingchen.com/tw/sitemap.xml
+Sitemap: https://tachingchen.com/en/sitemap.xml
