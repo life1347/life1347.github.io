@@ -1,0 +1,16 @@
+{{ if and (isset .Params "featuredpath") (ne .Params.featuredpath "") }}
+    {{ $.Scratch.Set "path" .Params.featuredpath }}
+
+    {{ if and (isset .Params "featured") (ne .Params.featuredpath "") }}
+        {{ $.Scratch.Set "structType" "page" }}
+        {{ partial "img-path" . }}
+        {{ $path := $.Scratch.Get "path" }}
+        {{ $alt := $.Scratch.Get "alt" }}
+        {{ $img := $.Scratch.Get "img" }}
+
+        <a href="{{ .RelPermalink | absURL }}" class="image featured">
+            <meta itemprop="image" content="{{ $path | absURL }}/{{ .Params.featured }}">
+            <img src="{{ $path | absURL }}/{{ .Params.featured }}" alt="{{ $alt }}">
+        </a>
+    {{ end }}
+{{ end }}

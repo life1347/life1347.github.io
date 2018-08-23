@@ -1,0 +1,24 @@
+<article class="post">
+    {{ .Render "header" }}
+    {{ .Render "featured" }}
+    {{ if .Truncated }}
+        <div id="content">
+            {{ .Summary }} 
+        </div>
+        <footer>
+            <ul class="actions">
+                <li><a href="{{ .Permalink }}" class="button big">{{ i18n "continue-reading" }}</a></li>
+            </ul>
+            {{ .Render "footer-category" }}
+        </footer>
+    {{ else }}
+        <div id="content">
+            {{ .Content }}
+        </div>
+        <footer>
+            <ul class="actions"></ul>
+            {{ .Render "footer-category" }}
+        </footer>
+    {{ end }}
+</article>
+    

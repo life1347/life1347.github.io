@@ -1,0 +1,29 @@
+[popular-posts]
+other = "熱門文章"
+
+[recent-posts]
+other = "近期文章"
+
+[categories]
+other = "文章分類"
+
+[category]
+other = "文章分類"
+
+[tags]
+other = "標籤"
+
+[tableOfContents]
+other = "文章目錄"
+
+[view-more-posts]
+other = "看更多精彩文章"
+
+[continue-reading]
+other = "繼續閱讀"
+
+[previous-page]
+other = "前一頁"
+
+[next-page]
+other = "下一頁"

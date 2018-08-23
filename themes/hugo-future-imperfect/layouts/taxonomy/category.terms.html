@@ -1,0 +1,44 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+    {{ partial "navbar" . }}
+    <!-- Main -->
+    <div id="main">
+        {{ if .Site.Params.categoriesByCount }}
+            {{ $.Scratch.Set "categories" .Data.Terms.ByCount }}
+        {{ else }}
+            {{ $.Scratch.Set "categories" .Data.Terms.Alphabetical }}
+        {{ end }}
+
+        {{ if ne .Lang .Site.Params.defaultContentLanguage }}
+            {{ $.Scratch.Set "lang" (add "/" .Lang) }}
+        {{ else }}
+            {{ $.Scratch.Set "lang" "" }}
+        {{ end }}
+
+        <ul class="posts">
+            <header>
+                <h1>{{ .Data.Plural }}</h1>
+            </header>
+            {{ $data := .Data }}
+            {{ range $key, $value := $.Scratch.Get "categories" }}
+                <li>
+                    <article>
+                        <header>
+                            {{ if ne $value.Name "" }}
+                                <a href="{{ $.Scratch.Get "lang" }}/{{ $data.Plural }}/{{ $value.Name | urlize }}">{{ $value.Name }}</a>
+                                <span style="float:right;">{{ $value.Count }}</span>
+                            {{ else }}
+                                Uncategorized
+                                <span style="float:right;">{{ $value.Count }}</span>
+                            {{ end }}
+                        </header>
+                    </article>
+                </li>
+            {{ end }}
+        </ul>
+    </div>
+
+    {{ $.Scratch.Set "showCategories" false }}
+    {{ partial "sidebar" . }}
+{{ partial "footer" . }}

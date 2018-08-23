@@ -1,0 +1,30 @@
+{{ $type := (index .Params 0) }}
+{{ if eq $type "h1" }}
+    <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+    {{ .Inner }}
+{{ else if eq $type "h2" }}
+    <h2 id="{{ index .Params 2 }}" >
+        <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+        {{ index .Params 1 }}
+    </h2>
+{{ else if eq $type "h3" }}
+    <h3 id="{{ index .Params 2 }}" >
+        <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+        {{ index .Params 1 }}
+    </h3>
+{{ else if eq $type "h4" }}
+    <h4 id="{{ index .Params 2 }}" >
+        <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+        {{ index .Params 1 }}
+    </h4>
+{{ else if eq $type "h5" }}
+    <h5 id="{{ index .Params 2 }}" >
+        <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+        {{ index .Params 1 }}
+    </h5>
+{{ else if eq $type "h6" }}
+    <h6 id="{{ index .Params 2 }}" >
+        <a href="#{{ index .Params 2 }}"><i class="fa fa-link"></i></a>
+        {{ index .Params 1 }}
+    </h6>
+{{ end}}
