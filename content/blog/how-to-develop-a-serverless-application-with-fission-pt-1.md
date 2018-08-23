@@ -127,8 +127,13 @@ Here are some steps to deploy a Golang function:
 
 ## Create environment
 
-Golang added [plugin](https://golang.org/pkg/plugin/) package since 1.8, it allows a program to load plugin file dynamically.
-We need to assign builder image to help us to build source code into a plugin file.
+Unlike NodeJS and Python, Golang is compile language and need to compile source code into binary before actually running it. 
+From 1.8 Golang added a [plugin](https://golang.org/pkg/plugin/) package, it allows a program to load binary plugin file dynamically.
+
+Luckily, we don't need to build plugin ourselves cause fission `buildermgr` build function source code into executable binary automatically 
+once any changes happen to package. 
+
+To enable this feature, we have to assign builder image with `--builder` flag.
 
 ```bash
 $ fission env create --name go --image fission/go-env --builder fission/go-builder
@@ -279,8 +284,12 @@ $ fission fn create --name foobar --env go --src example.zip --entrypoint Handle
 $ fission fn test --name foobar
 ```
 
----
+# Conclusion
 
-Stay tuned for [Part 2](/blog/how-to-develop-a-serverless-application-with-fission-pt-2) of this post, we will talk about how to create a REST API & Guestbook with fission!
+This part we introduce the advantage of adopting fission as serverless framework on kubernetes, basic concept of 
+around fission core and how to create a simple HelloWorld example with fission.
+
+For [Part 2](/blog/how-to-develop-a-serverless-application-with-fission-pt-2) of this post, we will talk about 
+what's the actual request payload being passed to user function and how to create a guestbook application with fission!
 
 In the meantime, feel free to [join the Fission community](https://fission.io/community/)!

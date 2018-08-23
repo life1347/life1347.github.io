@@ -20,11 +20,11 @@ linktitle = ""
 
 # Introduction
 
-At [Part 1](/blog/how-to-develop-a-serverless-application-with-fission-pt-1), we talked about the advantage of adopting fission as serverless framework on 
+[Part 1](/blog/how-to-develop-a-serverless-application-with-fission-pt-1) we talked about the advantage of adopting fission as serverless framework on 
 kubernetes, basic concept of around fission core and how to create a simple HelloWorld example with fission.
 
-In this post we'll dive deeper to see what's the payload of a HTTP request will be passed into user function 
-and learn how to create a serverless guestbook consists with REST functions in Golang.
+In this post we'll dive deeper to see what's the payload of a HTTP request being passed to user function 
+and learn how to create a guestbook application consists with REST functions in Golang.
 
 # How Fission maps HTTP requests to user function
 
@@ -274,68 +274,14 @@ In this case, the DNS name will be `cockroachdb.guestbook:26257`.
 
 ```go
 dbUrl := "postgresql://root@cockroachdb.guestbook:26257/guestbook?sslmode=disable"
-```  
-
-# Deploy the Same Application to Different Environment
-
-We may have different environments (e.g. Canary, Production) to test and run with. Fission allows users to deploy the same
-application with `spec` files. A spec file is a Fission Object in YAML format includes all necessary information. 
-
-Here is a sample YAML that describe a go environment:
-
-```yaml
-apiVersion: fission.io/v1
-kind: Environment
-metadata:
-  creationTimestamp: null
-  name: go
-  namespace: default
-spec:
-  TerminationGracePeriod: 360
-  builder:
-    command: build
-    image: fission/go-builder
-  keeparchive: false
-  poolsize: 3
-  resources: {}
-  runtime:
-    functionendpointport: 0
-    image: fission/go-env
-    loadendpointpath: ""
-    loadendpointport: 0
-  version: 2
 ```
 
-Another good news is you don't need to write YAML files by hand. Here are steps for how to create spec files:
+# Conclusion
 
-1. Create spec directory
-2. Create fission resources with flag `--sepc`
-3. Check spec files under `spec` directory
+This part we know what's the actual request payload a function get and understand how to developer a guestbook application that
+store message in 3rd-party database service.
 
-```bash
-$ fission spec init
+[Part 3](/blog/how-to-develop-a-serverless-application-with-fission-pt-3) will introduce how to use AJAX to interact with backend
+function also how to deploy a application to different fission clusters. 
 
-$ fission env create --name go --image fission/go-env --builder fission/go-builder --spec
-
-$ cat specs/env-go.yaml
-```
-
-After creating fission resources for application, you can deploy & destroy an application with `fission spec` command:
-
-```bash
-$ fission spec apply 
-```
-
-Now, the go environment was created automatically.
-
-```bash
-$ fission env list
-NAME   UID                                  IMAGE            POOLSIZE MINCPU MAXCPU MINMEMORY MAXMEMORY EXTNET GRACETIME
-go     d30a78ee-a618-11e8-a55e-08002720b796 fission/go-env   3        0      0      0         0         false  360
-```
-
-Once the application is no longer needed, use `destroy` to remove it.
-
-```bash
-$ fission spec destroy
-```
+And feel free to [join the Fission community](https://fission.io/community/)!
