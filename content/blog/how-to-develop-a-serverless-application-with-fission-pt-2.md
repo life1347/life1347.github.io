@@ -69,7 +69,7 @@ $ curl -X POST -d '{"test": "foo"}' \
     "http://${FISSION_ROUTER}/test/pathvar?foo=bar"
 ```
 
-*NOTE: For how to set up `$FISSION_ROUTER`, please visit http://localhost:51405/0.9.2/usage/trigger/*
+**NOTE**: For how to set up `$FISSION_ROUTER`, please visit https://docs.fission.io/latest/fission-env/fission_router/
 
 ## Request Payload
 
