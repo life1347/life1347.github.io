@@ -20,16 +20,16 @@ linktitle = ""
 
 # Introduction
 
-When users try to develop serverless applications, they often choose some exisiting and mature solutions like [AWS Lambda](https://aws.amazon.com/lambda/) or [Google Cloud Functions](https://cloud.google.com/functions/). However, users may encounter following problems after application development:
+When users try to develop serverless applications, they often choose some existing and mature solutions like [AWS Lambda](https://aws.amazon.com/lambda/) or [Google Cloud Functions](https://cloud.google.com/functions/). However, users may encounter following problems after application development:
 
-1. It's hard to simulate the same environment on local machine. 
-2. Vendor lock-in problem make it hard to move applications from one cloud provider to another.
-3. Some sensitive data may not allow to send outside of on-premises datacenter.
+1. Simulating the same environment on local machines is difficult
+2. Vendor lock-in prevents moving applications from one cloud provider to another
+3. Sensitive data that should not be sent outside an on-premises datacenter
 
 [Fission](https://fission.io/) is a serverless framework built on top of [Kubernetes](https://kubernetes.io/). Here are some benefits for adopting Fission as serverless solution to develop a severless application:
 
 * `Portability`
-    * Labtop, PC, On-premises datacenter and even cloud providers wherever you can run kubernetes, you can run Fission.
+    * Laptop, PC, On-premises datacenter, even cloud providers. Wherever you can run Kubernetes, you can run Fission.
     * Recreate a serverless application in short time with fission `spec` files.
 * `Support rich event sources`
     * HTTP Trigger

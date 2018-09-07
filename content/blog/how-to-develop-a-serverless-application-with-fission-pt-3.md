@@ -237,5 +237,5 @@ trying to address the problem and will be released in 0.11.0.
 
 # Conclusion
 
-After all 3 parts of this post, hope you understand fission more deeply and start using fission as FaaS solution on kubernetes. 
+After all 3 parts of this post, hope you understand fission more well and start using fission as FaaS solution on kubernetes. 
 Since fission is a growing project, feel free to [join the Fission community](https://fission.io/community/) to share your idea with us! :)
